@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //-----------------code here -------------------------------
-        createNotificationChannel()
 
         //1.click button select time
         binding.btnSelect.setOnClickListener {
@@ -106,19 +104,4 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this,"Alarm cancel",Toast.LENGTH_SHORT).show()
     }
 
-    private fun createNotificationChannel() {
-
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            val name:CharSequence = "tuandroid123"
-            val description = "Channel for Alarm Manager"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-
-            val channel = NotificationChannel("tuandroid",name,importance)
-            channel.description =description
-
-            val notificationManager = getSystemService(NotificationManager::class.java)
-
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
 }
